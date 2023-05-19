@@ -16,29 +16,42 @@
     type="range" 
     name="password-lenght" 
     id="password-lenght"
-    value="16"
+    value="8"
     min="4"
     max="64"
     >
 
-    <button onclick="generatePassword()" >Copiar senha</button>
+    <button onclick="" >Copiar senha</button>
     
 
     <script>
+        let rangePassword = 9;
+
         const generatePassword = () =>{
             const chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
-            
+            const inputEl  = document.querySelector("#password");
+                      
             let password = "";
-
-            for(let i = 0; i < 8; i++){
+            
+            for(let i = 0; i < rangePassword; i++){
                 const randomNumber  = Math.floor(Math.random() * chars.length);
 
                 //password += chars[randomNumber];
                 password += chars.substring(randomNumber, randomNumber + 1);
-                console.log(password)
+                inputEl.value = password;
 
             }
         }
+
+        const rangeEl = document.querySelector("#password-lenght");
+        rangeEl.addEventListener("input", ()=>{
+            rangePassword =rangeEl.value;
+            generatePassword();
+        })
+
+        generatePassword();
+
+
     </script>
 </body>
 </html>
