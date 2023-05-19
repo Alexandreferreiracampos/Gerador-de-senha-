@@ -21,7 +21,24 @@
     max="64"
     >
 
-    <button>Copiar senha</button>
+    <button onclick="generatePassword()" >Copiar senha</button>
     
+
+    <script>
+        const generatePassword = () =>{
+            const chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
+            
+            let password = "";
+
+            for(let i = 0; i < 8; i++){
+                const randomNumber  = Math.floor(Math.random() * chars.length);
+
+                //password += chars[randomNumber];
+                password += chars.substring(randomNumber, randomNumber + 1);
+                console.log(password)
+
+            }
+        }
+    </script>
 </body>
 </html>
