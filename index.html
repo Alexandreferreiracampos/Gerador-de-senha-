@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="security-indicator">
-                <div id="security-indicator-bar" class="bar critical" style="width: 6.2px">
+                <div id="security-indicator-bar" class="bar" style="width: 6.2px">
 
                 </div>
             </div>
@@ -83,7 +83,8 @@
         const numberCheck = document.querySelector("#number-check");
         const symbolCheck = document.querySelector("#symbol-check");
         const passwordLengthText = document.querySelector("#password-length-text");
-
+        const securityIndicatorBar = document.querySelector("#security-indicator-bar"); 
+       
         const generatePassword = () => {
 
             let chars = "abcdefghjkmnpqrstuvwxyz";
@@ -100,6 +101,19 @@
             }
             if(symbolCheck.checked){
                 chars += symbolChars;
+            }
+
+            if(upercaseCheck.checked && numberCheck.checked && symbolCheck.checked ){
+                securityIndicatorBar.classList.add("safe");
+            }
+            else if(!upercaseCheck.checked && !numberCheck.checked && !symbolCheck.checked ){
+                securityIndicatorBar.classList.remove("safe");
+                securityIndicatorBar.classList.remove("warning");
+                securityIndicatorBar.classList.add("critical");
+            }else{
+                securityIndicatorBar.classList.remove("safe");
+                securityIndicatorBar.classList.add("warning");
+
             }
                        
 
