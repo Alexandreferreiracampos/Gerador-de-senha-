@@ -79,6 +79,10 @@
 
       <div class="submit">
         <button id="copy-2">Copiar senha</button>
+        <div id="MSG-copy" class="MSG boxNone">
+          <span >Senha copiada!</span>
+        </div>
+        
       </div>
     </main>
     <script>
@@ -122,6 +126,10 @@
 
         calculateQuality()
         calculateFontSize()
+
+        document.querySelector("#MSG-copy").classList.remove("boxInline")
+        document.querySelector("#MSG-copy").classList.add("boxNone")
+        
       }
 
       function calculateQuality() {
@@ -181,6 +189,8 @@
 
       function copy() {
         navigator.clipboard.writeText(inputEl.value)
+        document.querySelector("#MSG-copy").classList.remove("boxNone")
+        document.querySelector("#MSG-copy").classList.add("boxInline")
       }
 
       const passwordLengthEl = document.querySelector("#password-length")
